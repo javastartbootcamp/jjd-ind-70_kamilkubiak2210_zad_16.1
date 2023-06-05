@@ -14,25 +14,18 @@ public class SeasonManager {
 
     }
 
-    public static void printInfoAboutSeason(String season) {
-        if (season.equalsIgnoreCase(String.valueOf(Season.SPRING.getPlName()))) {
+    public void printInfoAboutSeason(String seasonAsText) {
+        Season season = Season.findSeasonByPlName(seasonAsText);
+        if (season != null) {
             System.out.println("W tej porze roku są następujące miesiące:");
-            System.out.println(Arrays.toString(Season.SPRING.getMonths()));
-        } else if (season.equalsIgnoreCase(String.valueOf(Season.SUMMER.getPlName()))) {
-            System.out.println("W tej porze roku są następujące miesiące:");
-            System.out.println(Arrays.toString(Season.SUMMER.getMonths()));
-        } else if (season.equalsIgnoreCase(String.valueOf(Season.AUTUMN.getPlName()))) {
-            System.out.println("W tej porze roku są następujące miesiące:");
-            System.out.println(Arrays.toString(Season.AUTUMN.getMonths()));
-        } else if (season.equalsIgnoreCase(String.valueOf(Season.WINTER.getPlName()))) {
-            System.out.println("W tej porze roku są następujące miesiące:");
-            System.out.println(Arrays.toString(Season.WINTER.getMonths()));
+            System.out.println(Arrays.toString(season.getMonths()));
         } else {
             System.out.println("Nieznany format");
         }
+
     }
 
-    public static void printNamesOfSeasons() {
+    public void printNamesOfSeasons() {
         Season[] values = Season.values();
         for (Season value : values) {
             System.out.println(value.getPlName());

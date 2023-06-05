@@ -24,6 +24,16 @@ public enum Season {
         this.months = months;
     }
 
+    public static Season findSeasonByPlName(String userInput) {
+        Season[] seasons = Season.values();
+        for (Season season : seasons) {
+            if (season.getPlName().equalsIgnoreCase(userInput)) {
+                return season;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "Season{" +
