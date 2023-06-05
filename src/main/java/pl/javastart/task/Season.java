@@ -1,5 +1,44 @@
 package pl.javastart.task;
 
+import java.util.Arrays;
+
 public enum Season {
-    //uzupełnij
+    SPRING("Wiosna", new String[]{"marzec", "kwiecień", "maj"}),
+    SUMMER("Lato", new String[]{"czerwiec, lipiec, sierpień "}),
+    AUTUMN("Jesień", new String[]{"wrzesień, październik, listopad"}),
+    WINTER("Zima", new String[]{"grudzień, styczeń, luty"});
+
+    private final String plName;
+    private final String[] months;
+
+    public String[] getMonths() {
+        return months;
+    }
+
+    public String getPlName() {
+        return plName;
+    }
+
+    Season(String plName, String[] months) {
+        this.plName = plName;
+        this.months = months;
+    }
+
+    public static Season findSeasonByPlName(String userInput) {
+        Season[] seasons = Season.values();
+        for (Season season : seasons) {
+            if (season.getPlName().equalsIgnoreCase(userInput)) {
+                return season;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Season{" +
+                "plName='" + plName + '\'' +
+                ", months=" + Arrays.toString(months) +
+                '}';
+    }
 }
